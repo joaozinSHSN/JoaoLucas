@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
@@ -19,19 +19,35 @@ function App() {
   const [periodoSelecionado, setPeriodoSelecionado] = useState('manha');
   const [erro, setErro] = useState('');
 
+  // Carregar dados salvos no LocalStorage ao iniciar o app
+  useEffect(() => {
+    const estudosSalvos = localStorage.getItem('estudos');
+    if (estudosSalvos) {
+      setEstudos(JSON.parse(estudosSalvos));
+    }
+  }, []);
+
+  // Função para salvar os estudos no LocalStorage
+  const salvarEstudos = (novosEstudos) => {
+    localStorage.setItem('estudos', JSON.stringify(novosEstudos));
+  };
+
   const adicionarAtividade = () => {
     if (!atividade) {
       setErro('Por favor, preencha uma atividade antes de adicionar.');
       return;
     }
 
-    setEstudos((prevEstudos) => ({
-      ...prevEstudos,
+    const novosEstudos = {
+      ...estudos,
       [diaSelecionado]: {
-        ...prevEstudos[diaSelecionado],
+        ...estudos[diaSelecionado],
         [periodoSelecionado]: atividade,
       },
-    }));
+    };
+
+    setEstudos(novosEstudos);
+    salvarEstudos(novosEstudos);
 
     // Limpar os campos após adicionar
     setAtividade('');
@@ -39,10 +55,23 @@ function App() {
   };
 
   const limparDia = (dia) => {
-    setEstudos((prevEstudos) => ({
-      ...prevEstudos,
+    const novosEstudos = {
+      ...estudos,
       [dia]: { manha: '', tarde: '', noite: '' },
-    }));
+    };
+    setEstudos(novosEstudos);
+    salvarEstudos(novosEstudos);
+  };
+
+  // Função para limpar todas as atividades
+  const limparTodosDias = () => {
+    const estudosVazios = diasDaSemana.reduce((acc, dia) => {
+      acc[dia] = { manha: '', tarde: '', noite: '' };
+      return acc;
+    }, {});
+    
+    setEstudos(estudosVazios);
+    salvarEstudos(estudosVazios);
   };
 
   return (
@@ -90,6 +119,8 @@ function App() {
           <button onClick={() => limparDia(dia)}>Limpar Atividades do Dia</button>
         </div>
       ))}
+
+      <button className="limpar-tudo" onClick={limparTodosDias}>Limpar Todas as Atividades</button>
     </div>
   );
 }
