@@ -1,78 +1,97 @@
 body {
-    background-color: #e6f7ff; 
+    background-color: #f0f8ff; /* Azul claro mais suave */
     color: #333;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-  }
-  
-  .app-container {
+    line-height: 1.6; /* Melhor legibilidade */
+}
+
+.app-container {
     max-width: 800px;
     margin: 50px auto;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #fff; /* Fundo branco */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    color: #ff0000; /* Vermelho vibrante para o título principal */
+    padding: 30px;
+    border-radius: 12px;
+    background-color: #ffffff; /* Fundo branco */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra maior */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transição suave */
+}
+
+.app-container:hover {
+    transform: scale(1.02); /* Leve zoom ao passar o mouse */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Sombra mais forte */
+}
+
+h1 {
+    color: #ff6347; /* Vermelho tomate mais suave */
     text-align: center;
     margin-bottom: 30px;
-  }
-  
-  .input-container {
+    font-size: 2.5rem; /* Tamanho maior */
+}
+
+.input-container {
     margin-bottom: 20px;
-    padding: 10px;
-    border: 2px solid #ff4500; /* Bordas em vermelho */
-    border-radius: 5px;
+    padding: 15px;
+    border: 2px solid #ff6347; /* Tom mais suave de vermelho */
+    border-radius: 10px; /* Bordas mais arredondadas */
     background-color: #ffe6e6; /* Fundo suave em tom de vermelho claro */
-  }
-  
-  h2 {
-    color: #ff4500; /* Laranja vibrante para os dias da semana */
+}
+
+h2 {
+    color: #ff6347; /* Tom suave de vermelho-laranja */
     margin-bottom: 10px;
-  }
-  
-  .periodo-container {
+    font-size: 1.8rem; /* Tamanho maior */
+}
+
+.periodo-container {
     margin-bottom: 10px;
-    padding: 5px;
-    border: 1px solid #ff4500; /* Bordas em vermelho */
-    border-radius: 5px;
+    padding: 8px;
+    border: 1px solid #ff6347; /* Bordas em vermelho suave */
+    border-radius: 8px;
     background-color: #ffcccb; /* Fundo suave em tom de vermelho */
-  }
-  
-  label {
+}
+
+label {
     display: inline-block;
     width: 100px;
-    color: #d9534f; /* Vermelho escuro para os rótulos */
-  }
-  
-  input[type="text"],
-  select {
+    color: #d9534f; /* Vermelho escuro */
+    font-weight: bold; /* Destaque para os rótulos */
+}
+
+input[type="text"],
+select {
     width: calc(100% - 110px);
-    padding: 8px;
-    border: 1px solid #d9534f; /* Bordas do campo de texto em vermelho */
-    border-radius: 5px;
-    background-color: #ffe4e1; /* Fundo suave no campo de entrada */
-  }
-  
-  input[type="text"]:focus,
-  select:focus {
-    border-color: #ff6347; /* Realce da borda ao focar */
-    outline: none;
-  }
-  
-  button {
-    background-color: #ff4500; /* Vermelho */
-    color: white;
     padding: 10px;
+    border: 1px solid #d9534f; /* Bordas vermelhas */
+    border-radius: 5px;
+    background-color: #ffe4e1; /* Fundo suave */
+    transition: border-color 0.3s ease-in-out; /* Transição na borda */
+}
+
+input[type="text"]:focus,
+select:focus {
+    border-color: #ff6347; /* Realce suave na borda ao focar */
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 99, 71, 0.5); /* Sombra de foco */
+}
+
+button {
+    background-color: #ff4500; /* Vermelho vibrante */
+    color: white;
+    padding: 12px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-  }
-  
-  button:hover {
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+button:hover {
     background-color: #dc143c; /* Vermelho escuro */
-  }
+    transform: scale(1.05); /* Leve zoom ao passar o mouse */
+}
+
+button:active {
+    transform: scale(0.98); /* Redução ao clicar */
+}
+
